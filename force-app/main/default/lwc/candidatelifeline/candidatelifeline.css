@@ -1,0 +1,23 @@
+.icon {
+  margin-right: 5px; /* Spacing between the icon and text */
+}
+
+.icon[data-icon-name="utility:check"] {
+  color: green !important; /* Change the color for the check icon */
+}
+
+.icon[data-icon-name="utility:file"] {
+  color: blue !important; /* Change the color for the file icon */
+}
+
+.icon[data-icon-name="utility:question"] {
+  color: #ffcc00 !important; /* Change the color for the question icon */
+}
+
+.icon[data-icon-name="utility:success"] {
+  color: #28a745 !important; /* Change the color for the success icon */
+}
+
+.icon[data-icon-name="utility:error"] {
+  color: red !important; /* Change the color for the error icon */
+}

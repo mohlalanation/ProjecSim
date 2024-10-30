@@ -1,0 +1,72 @@
+<template>
+    <lightning-card title="Candidatelifeline Stages" icon-name="custom:custom63">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+        </template>
+
+        <template if:true={candidates}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <lightning-icon icon-name="action:new_task" alternative-text="Application Received" size="x-small"></lightning-icon>
+                            Application Received
+                        </th>
+                        <th scope="col">
+                            <lightning-icon icon-name="action:approval" alternative-text="Shortlisting" size="x-small"></lightning-icon>
+                            Shortlisting
+                        </th>
+                        <th scope="col">
+                            <lightning-icon icon-name="action:preview" alternative-text="Interview" size="x-small"></lightning-icon>
+                            Interview
+                        </th>
+                        <th scope="col">
+                            <lightning-icon icon-name="action:filter" alternative-text="Screening" size="x-small"></lightning-icon>
+                            Screening
+                        </th>
+                        <th scope="col">
+                            <lightning-icon icon-name="action:check" alternative-text="Hired" size="x-small"></lightning-icon>
+                            Hired
+                        </th>
+                        <th scope="col">
+                            <lightning-icon icon-name="action:close" alternative-text="Rejected" size="x-small"></lightning-icon>
+                            Rejected
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Each stage column with drag and drop enabled -->
+                        <td ondragover={handleDragOver} ondrop={handleDrop} data-stage="Application Received">
+                            <template for:each={candidates} for:item="candidate">
+                                <template if:true={candidate.isApplicationReceived}>
+                                    <div key={candidate.Id} class="slds-box slds-box_x-small slds-m-around_x-small" 
+                                         draggable="true" 
+                                         ondragstart={handleDragStart}
+                                         data-id={candidate.Id}>
+                                        <lightning-icon icon-name="standard:account" alternative-text="Candidate Icon" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                                        {candidate.Name}
+                                    </div>
+                                </template>
+                            </template>
+                        </td>
+                        <td ondragover={handleDragOver} ondrop={handleDrop} data-stage="Shortlisting">
+                            <template for:each={candidates} for:item="candidate">
+                                <template if:true={candidate.isShortlisting}>
+                                    <div key={candidate.Id} class="slds-box slds-box_x-small slds-m-around_x-small" 
+                                         draggable="true" 
+                                         ondragstart={handleDragStart}
+                                         data-id={candidate.Id}>
+                                        <lightning-icon icon-name="standard:account" alternative-text="Candidate Icon" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                                        {candidate.Name}
+                                    </div>
+                                </template>
+                            </template>
+                        </td>
+                        <!-- Repeat for other stages (Interview, Screening, Hired, Rejected) -->
+                    </tr>
+                </tbody>
+            </table>
+        </template>
+    </lightning-card>
+</template>
